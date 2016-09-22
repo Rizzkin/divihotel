@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/fontawesome/font-awesome.min.css">
     <link rel="stylesheet" href="./css/bootstrap-colorpicker.min.css">
     <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/login.css">
     
 	<script src="./js/bootstrap/bootstrap.min.js"></script>

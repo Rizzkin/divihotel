@@ -1,0 +1,107 @@
+/*
+ * Dit is de custom style sheet van jouw website
+ *
+ */
+
+/*inports*/
+@import url(https://fonts.googleapis.com/css?family=Poppins|Montserrat);
+
+body {
+	
+	background-color: #fff;
+}
+
+a {
+	
+	text-decoration: none;
+}
+
+*{
+	margin: 0 auto;
+}
+
+.remove{
+	color: #D91E18 !important;
+}
+
+.title{
+	font-size: 25px;
+	text-transform: uppercase;
+	font-family: 'Poppins', sans-serif;
+	text-align: center;
+	    width: 100%;
+    float: left;
+    margin-bottom: 0;
+}
+
+.genre{
+	color: #fff;
+	font-size: 1.2em;
+	border-bottom-left-radius: 16px;
+	border-bottom-right-radius: 16px;
+	background-color:#007EA7;
+	text-transform: uppercase;
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 60px;
+	height: auto;
+	float: left;
+	text-align: center;
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+.optiongenre{
+text-transform: capitalize;
+}
+
+.songwrapper{
+	background-size: cover;
+	height: 30vh;
+	margin-left: 15%;
+	margin-right: 15%;
+	width: 70%;
+	padding: 20px;
+}
+.wrappercontent{
+	background-size: cover;
+	float: left;
+	height: 40vh;
+	margin-left: 15%;
+	margin-right: 15%;
+	width: 70%;
+}
+
+.banner{
+	width: 100vw;
+	height: 50vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+.nopadding {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.headersingle{
+	opacity:1!important;
+	text-transform: uppercase;
+	margin: 0;
+	font-size:3em;
+	color: #111111;
+	text-align: center;
+}
+.border {
+	border-radius: 0px 0px 16px 16px;
+	margin-top: -1px;
+	background-color: #DDDDDD;
+}
+#succestext{
+	padding: 8px!important;
+}
+h1{
+	font-size: 20px;
+}
