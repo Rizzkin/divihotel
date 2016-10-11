@@ -100,7 +100,7 @@ class User extends Core{
     public function delete($id){
 	    $con = new Core();
 	    $con->connect();
-    	$result = $con->myconn->query('DELETE FROM `pot`.`reserveren` WHERE `reserveren`.`id` ='. $id);
+    	$result = $con->myconn->query('DELETE FROM `divihotel`.`vakantiehuizen` WHERE `vakantiehuizen`.`id` ='. $id);
     	$page = $_SERVER['PHP_SELF'];
     	$this->answer = "<p class='alert-danger' id='succestext'>This villa has been deleted.</p>";
     }
@@ -308,14 +308,14 @@ class User extends Core{
 Class Date extends Core{
 
     
-    function reserveer($accomodatie,$landid,$personen,$userid,$resvan, $restot,$park,$faciliteit){
+    function reserveer($personen, $userid, $resvan, $restot, $naam, $house, $achternaam, $postcode, $adres){
         $con = new Core();
         $con->connect();
-        $sql = 'INSERT INTO reserveren (accomodatie,land_id,personen,userid,resvan,restot,park,faciliteit) VALUES (?,?,?,?,?,?,?,?)';
+        $sql = 'INSERT INTO reserveren (personen,userid,resvan,restot,naam,house,achternaam,postcode,adres) VALUES (?,?,?,?,?,?,?,?,?)';
 
         if ($stmt = $con->myconn->prepare($sql))
         {
-            $stmt->bind_param('sisissss', $accomodatie,$landid,$personen,$userid,$resvan, $restot,$park,$faciliteit);
+            $stmt->bind_param('sisssssss', $personen, $userid, $resvan, $restot, $naam, $house, $achternaam, $postcode, $adres);
             $stmt->execute();
             $stmt->close();
         }
@@ -324,22 +324,19 @@ Class Date extends Core{
         }
     }
 
-    function check($resvan, $restot,$accomodatie){
+    function check($resvan, $restot, $house){
         $con = new Core();
         $con->connect();
         $errmsg = array();
-        $sqlres = 'SELECT * FROM reserveren  WHERE (
-    ? <= restot
-    AND ? >= resvan 
-    ) AND accomodatie=?';
+        $sqlres = 'SELECT * FROM reserveren  WHERE (? <= restot AND ? >= resvan ) AND house=?';
          
         if($stmt = $con->myconn->prepare($sqlres)){
-            $stmt->bind_param('ssi', $resvan, $restot,$accomodatie);
+            $stmt->bind_param('sss', $resvan, $restot, $house);
             $stmt->execute();
             $stmt->store_result();
         }
         if ($stmt->fetch()){
-            $errmsg[] = '<div class="alert alert-danger alert-dismissible registererrors" role="alert" style="width: 350px;">Sorry is already reservated by someone else.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button></div>';
+            $errmsg[] = '<div class="alert alert-danger alert-dismissible registererrors" style="width: 350px;">Sorry is already reserved by someone else.<button type="button" class="close" data-dismiss="alert"></button></div>';
             return $errmsg;
         }
 

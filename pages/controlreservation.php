@@ -14,7 +14,8 @@ include $basePath . '/templates/nav.php';
     <table class="table">
     <thead>
     <tr>
-    <th style="width:100px;">Accomodatie</th>
+    <th style="width:100px;">Naam</th>
+    <th style="width:100px;">House</th>
     <th style="width:100px;">Aantal personen</th>
     <th style="width:100px;">Reservatie van:</th>
     <th style="width:100px;">Reservatie tot:</th>
@@ -28,9 +29,13 @@ include $basePath . '/templates/nav.php';
     foreach($selectAll as $reservation){
         echo "<tr>";
 
-     echo "<th>";
-     echo $reservation['accomodatie'];
-     echo "</th>";
+     echo "<td>";
+     echo $reservation['naam'], '&nbsp', $reservation['achternaam'];
+     echo "</td>";
+     
+     echo "<td>";
+     echo $reservation['house'];
+     echo "</td>";
 
         echo "<td>";
         echo $reservation['personen'];
@@ -53,5 +58,6 @@ include $basePath . '/templates/nav.php';
     ?>
     </tbody>
     </table>
+    </div>
     </div>
     </div>

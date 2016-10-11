@@ -75,11 +75,10 @@ include $basePath . '/templates/nav.php';
                 <div role="tabpanel" class="tab-pane active" id="add">
                     <form class="" action="?page=control" method="post">
                         <div class="form-group">
-                            <p>
-                                <label for="house">House :</label>
-                                <input type="text" class="form-control" name="house" id="house" required>
-                            </p>
-                        </div>
+                        <p>
+                            <label for="house">House :</label>
+                            <input type="text" class="form-control" name="house" id="house" required>
+                        </p>
                         <p>
                             <label for="imgurl">Image URL :</label>
                             <input type="text" class="form-control" name="imageurl" id="imageurl" required>
@@ -90,6 +89,7 @@ include $basePath . '/templates/nav.php';
                         </p>
                         <br><br>
                         <input type="submit" name="submit" class="btn btn-primary" value="Add new house!">
+                     </div>
                     </form>
                     <br>
                </div>

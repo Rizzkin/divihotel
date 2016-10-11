@@ -55,6 +55,10 @@ if(isset($_GET['page']))
 	{
 		include 'pages/control.php';
 	}
+	elseif($_GET['page'] == 'contact')
+	{
+		include 'pages/contact.php';
+	}
 	else
 	{
 	   include 'pages/index.php';

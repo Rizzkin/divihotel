@@ -33,15 +33,20 @@ $user = new Date();
 			    <div class="col-md-3">
 			    </div>
 			    <div class="col-md-6">
-			    			<h3 class='headersingle border'><?php echo $selectSingle['house'], ' - ' , $selectSingle['park']  ?></h3>
+			    			<h3 class='headersingle border'><?php echo $selectSingle['house'] ?></h3>
 			    </div>
 			    <div class="col-md-3">
 			    </div>
+			    </div>
+			    <div class="row">
 			        <br>
-			        <div class="col-xs-12">
-			            <h1><b><?php echo $selectSingle['park']; ?></b></h1>
-			            <p><?php echo $selectSingle['description']; ?></p>
+			        <div class="col-md-3">
+			    	</div>
+			        <div class="col-md-6">
+			            <p class="descborder border"><?php echo $selectSingle['description']; ?></p>
 			        </div>
+			        <div class="col-md-3">
+			    	</div>
 			    </div>
 			</div>
 		</div>
@@ -87,6 +92,24 @@ if(isset($_SESSION['logged'])){
 <div class="container">
   <table class="table table-bordered">
   
+<tr>
+<td>Naam</td>
+<td><input type="text" name="naam"required/></td>
+</tr>
+<tr>
+<td>Achternaam</td>
+<td><input type="text" name="achternaam" required/></td>
+</tr>
+<tr>
+<td>Postcode</td>
+<td><input type="text" name="postcode" required/></td>
+</tr>
+<tr>
+<td>Adres</td>
+<td><input type="text" name="adres" required/></td>
+</tr>
+
+  
     <tr>
     <td>Aantal Personen</td><td>
 <select name="personen">
@@ -106,23 +129,14 @@ while ( $i <= 12 ) {
 ?>
 </select>
 </td>
-	<input type="hidden" name="accomodatie" value="<?php echo $selectSingle['house'] ?>"/>
-	<input type="hidden" name="park" value="<?php echo $selectSingle['park'] ?>"/>
-	<input type="hidden" name="landid" value="<?php echo $selectSingle['land_id'] ?>"/>
+<input type="hidden" name="house" value="<?php echo $selectSingle['house'] ?>"/>
 	<tr>
-	<td>Datums</td>
+	<td>Datum</td>
 	<td>
 <label for="from">From</label>
 <input type="text" id="resvan" class="readonly" name="resvan" required/>
 <label for="to">to</label>
 <input type="text" id="restot" class="readonly" name="restot" required/>
-  <select name="faciliteit" class="selectpicker">
-<?php 
- foreach($selectFac as $facitem) {
-      echo '<option value="' . $facitem['faciliteiten'] . '">'. $facitem['faciliteiten']  ."</option>";
-      }	
-                                ?>
-</select>
 <input name="res" type="submit" value="reserveer" class="btn"/>
 </td>
 </tr>
@@ -130,26 +144,26 @@ while ( $i <= 12 ) {
 	</table>
 	</div>
 	</form>
-	
 	<?php 
-}
+	}
 	if (isset($_POST['res']) && $_POST['res'] === 'reserveer') {
 	    $personen = $_POST['personen'];
 	    $resvan = $_POST['resvan'];
 	    $restot = $_POST['restot'];
-	    $accomodatie = $_POST['accomodatie'];
-	    $park = $_POST['park'];
+	    $naam = $_POST['naam'];
+	    $house = $_POST['house'];
+	    $achternaam = $_POST['achternaam'];
+	    $postcode = $_POST['postcode'];
+	    $adres = $_POST['adres'];
 	    $userid = $_SESSION['userid'];
-	    $landid = $_POST['landid'];
-	    $faciliteit = $_POST['faciliteit'];
-	    $errorMsgs = $user->check($resvan, $restot,$accomodatie);
+	    $errorMsgs = $user->check($resvan, $restot, $house);
 	    if (empty($errorMsgs)) {
-	        $user->reserveer($accomodatie,$landid,$personen,$userid,$resvan, $restot,$park,$faciliteit);
+	        $user->reserveer($personen, $userid, $resvan, $restot, $naam, $house, $achternaam, $postcode, $adres);
 	        echo '<div class="alert alert-success"  role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>You have succesfully made a reservation.</div>';
 	        exit;
 	    }
 	    foreach ($errorMsgs as $msg) {
-	        echo '<li style="text-align: center;">'. $msg. '</li>';
+	        echo $msg;
 	    }
 	
 	}

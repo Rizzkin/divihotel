@@ -38,18 +38,6 @@ class Song extends Basic
 
 		return $songInfo;
 	}
-	
-	public function getFac()
-	{
-	   $con = new Basic();
-    	$con->connect();
-        $data = $con->myconn->query('SELECT * FROM faciliteiten');
-        while ($item = $data->fetch_assoc())
-        {
-            $list[] = $item;
-        }
-        return $list;
-	}
 
 	// Haal alle nummers uit de tabel op
 	public function getAll()
@@ -74,7 +62,7 @@ class Song extends Basic
 	public function delete($id){
 	$con = new Basic();
 	$con->connect();
-	$result = $con->myconn->query('DELETE FROM `pot`.`vakantiehuizen` WHERE `vakantiehuizen`.`id` ='. $id);
+	$result = $con->myconn->query('DELETE FROM `divihotel`.`vakantiehuizen` WHERE `vakantiehuizen`.`id` ='. $id);
     $page = $_SERVER['PHP_SELF'];
     $this->answer = "<p class='alert-danger' id='succestext'>This villa has been deleted.</p>";
 	}
@@ -101,7 +89,7 @@ class Song extends Basic
                 return;
             }
             //insert the data to the database
-            $con->myconn->query("INSERT INTO `vakantiehuizen` (`house`, `description`, `imageurl`) VALUES ('$details[3]','$details[2]','$details[1]')");
+            $con->myconn->query("INSERT INTO `vakantiehuizen` (`house`, `description`, `imageurl`) VALUES ('$details[0]','$details[2]','$details[1]')");
 -
             $this->answer = "<p class='alert-success' id='succestext'>The song has been added</p>";
 
