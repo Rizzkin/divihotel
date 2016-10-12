@@ -100,9 +100,16 @@ class User extends Core{
     public function delete($id){
 	    $con = new Core();
 	    $con->connect();
-    	$result = $con->myconn->query('DELETE FROM `divihotel`.`vakantiehuizen` WHERE `vakantiehuizen`.`id` ='. $id);
+    	$result = $con->myconn->query('DELETE FROM `divihotel`.`hotelkamers` WHERE `hotelkamers`.`id` ='. $id);
     	$page = $_SERVER['PHP_SELF'];
     	$this->answer = "<p class='alert-danger' id='succestext'>This villa has been deleted.</p>";
+    }
+    public function deleteBooking($id){
+    	$con = new Core();
+    	$con->connect();
+    	$result = $con->myconn->query('DELETE FROM `divihotel`.`reserveren` WHERE `reserveren`.`id` ='. $id);
+    	$page = $_SERVER['PHP_SELF'];
+    	$this->answer = "<p class='alert-danger' id='succestext'>This reservation has been deleted.</p>";
     }
     
     function Register($username, $email, $password,$naam,$adres,$postcode,$plaats,$tel,$rek) {
@@ -134,7 +141,7 @@ class User extends Core{
     		exit();
     	}
     }
-    
+
     
     function validateRegister(array $userDetails)
     {

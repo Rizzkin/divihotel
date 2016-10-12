@@ -31,7 +31,7 @@ class Song extends Basic
 	{
 		$con = new Basic();
 		$con->connect();
-		$this->table = 'vakantiehuizen';
+		$this->table = 'hotelkamers';
 		$result = $con->myconn->query('SELECT * FROM ' . $this->table . ' WHERE id =' . $id);
 
 		$songInfo = $result->fetch_assoc();
@@ -48,7 +48,7 @@ class Song extends Basic
 		$songList = array();
 
 		// maak deze regel af: voer een query uit  // JOIN genre ON genre.id = songs.genre_id
-		$result = $con->myconn->query('SELECT house, id, imageurl FROM vakantiehuizen');
+		$result = $con->myconn->query('SELECT house, id, imageurl, price FROM hotelkamers');
 
 		// haal het resultaat op en plaats alle rijen in een array
 		while ($songModel = $result->fetch_assoc()) {
@@ -62,7 +62,7 @@ class Song extends Basic
 	public function delete($id){
 	$con = new Basic();
 	$con->connect();
-	$result = $con->myconn->query('DELETE FROM `divihotel`.`vakantiehuizen` WHERE `vakantiehuizen`.`id` ='. $id);
+	$result = $con->myconn->query('DELETE FROM `divihotel`.`hotelkamers` WHERE `hotelkamers`.`id` ='. $id);
     $page = $_SERVER['PHP_SELF'];
     $this->answer = "<p class='alert-danger' id='succestext'>This villa has been deleted.</p>";
 	}
@@ -89,9 +89,9 @@ class Song extends Basic
                 return;
             }
             //insert the data to the database
-            $con->myconn->query("INSERT INTO `vakantiehuizen` (`house`, `description`, `imageurl`) VALUES ('$details[0]','$details[2]','$details[1]')");
+            $con->myconn->query("INSERT INTO `hotelkamers` (`house`, `price`, `description`, `imageurl`) VALUES ('$details[0]','$details[1]','$details[3]','$details[2]')");
 -
-            $this->answer = "<p class='alert-success' id='succestext'>The song has been added</p>";
+            $this->answer = "<p class='alert-success' id='succestext'>The room has been added</p>";
 
         }
 	}
@@ -129,7 +129,7 @@ class Song extends Basic
     	$con = new Basic();
     	$con->connect();
         echo $id;
-        $data = $con->myconn->query('SELECT * , vakantiehuizen.id AS house_id FROM vakantiehuizen, land WHERE land_id = '. $id .' GROUP BY vakantiehuizen.id');
+        $data = $con->myconn->query('SELECT * , hotelkamers.id AS house_id FROM hotelkamers, land WHERE land_id = '. $id .' GROUP BY hotelkamers.id');
         while ($item = $data->fetch_assoc())
         {
             $items[] = $item;

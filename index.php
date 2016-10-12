@@ -88,7 +88,7 @@ switch ($action) {
 	
 	case 'deletereservation':
 		$resModel = new User();
-		$resModel->delete(isset($_GET['id']) ? $_GET['id'] : 0);
+		$resModel->deleteBooking(isset($_GET['id']) ? $_GET['id'] : 0);
 		$selectAll = $resModel->getallBookings();
 		include 'pages/controlreservation.php';
 		break;

@@ -16,6 +16,12 @@ include $basePath . '/templates/nav.php';
 
 	</div>
 	<br>
+	
+	<?php 
+	$rand = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
+	$color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)];
+	
+	?>
 	<br>
 	<br>
 	<br>
@@ -25,16 +31,16 @@ include $basePath . '/templates/nav.php';
             $image = $house['imageurl'];
             $id = $house['id'];
             $vhouse = $house['house'];
+            $price = $house['price'];
 
             echo "<a href='?action=viewhouse&id=$id'>";
             echo '<div class="col-xs-4">';
             echo '<h1 class="title">'.$house['house'];
-            echo ' - '. $house['house'];
             echo "<div class='wrappercontent'style='"."background-image: url(".$image.");'>";
 
             echo "<div class=''>";
             echo "</h1>";
-            echo "<p style='background-color:red;' class='genre'></p>";
+            echo "<p style='background-color: $color; ?>;' class='genre'>". "&euro; ", $price ." per nacht</p>";
 
             echo "</div>";
 	}

@@ -29,7 +29,7 @@ include $basePath . '/templates/nav.php';
     <table class="table">
     <thead>
     <tr>
-    <th style="width:100px;">House</th>
+    <th style="width:100px;">Room</th>
     <th style="width:130px; text-align: center">Delete</th>
     </tr>
     </thead>
@@ -76,8 +76,12 @@ include $basePath . '/templates/nav.php';
                     <form class="" action="?page=control" method="post">
                         <div class="form-group">
                         <p>
-                            <label for="house">House :</label>
+                            <label for="house">Room :</label>
                             <input type="text" class="form-control" name="house" id="house" required>
+                        </p>
+                        <p>
+                            <label for="house">Price :</label>
+                            <input type="text" class="form-control" name="price" id="price" required>
                         </p>
                         <p>
                             <label for="imgurl">Image URL :</label>
@@ -88,7 +92,7 @@ include $basePath . '/templates/nav.php';
                             <input type="text" class="form-control" name="description" id="description" required>
                         </p>
                         <br><br>
-                        <input type="submit" name="submit" class="btn btn-primary" value="Add new house!">
+                        <input type="submit" name="submit" class="btn btn-primary" value="Add new room!">
                      </div>
                     </form>
                     <br>

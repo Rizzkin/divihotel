@@ -108,7 +108,10 @@ if(isset($_SESSION['logged'])){
 <td>Adres</td>
 <td><input type="text" name="adres" required/></td>
 </tr>
-
+<tr>
+<td>Price</td>
+<td><?php echo $selectSingle['price']; ?></td>
+</tr>
   
     <tr>
     <td>Aantal Personen</td><td>
